@@ -1,0 +1,60 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+      - release-*
+    tags:
+      - v*
+    paths-ignore:
+      - "**.md"
+  pull_request:
+    branches:
+      - master
+      - release-*
+    paths-ignore:
+      - "**.md"
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+      - name: Parse release version
+        run: python ./.github/scripts/get_release_version.py
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+      - name: Publish Microsoft.Azure.Functions.Extensions.Dapr.Core
+        run: |
+          dotnet restore
+          dotnet pack src/Microsoft.Azure.Functions.Extensions.Dapr.Core/Microsoft.Azure.Functions.Extensions.Dapr.Core.csproj \
+            -o nuget \
+            -c Release \
+            -p:Version=1.0.0 \
+            -p:PackageVersion=1.0.0 \
+            --include-symbols
+          dotnet pack src/Microsoft.Azure.Functions.Worker.Extensions.Dapr/Microsoft.Azure.Functions.Worker.Extensions.Dapr.csproj \
+            -o nuget \
+            -c Release \
+            -p:Version=1.0.0 \
+            -p:PackageVersion=1.0.0 \
+            --include-symbols
+          dotnet pack src/Microsoft.Azure.WebJobs.Extensions.Dapr/Microsoft.Azure.WebJobs.Extensions.Dapr.csproj \
+            -o nuget \
+            -c Release \
+            -p:Version=1.0.0 \
+            -p:PackageVersion=1.0.0 \
+            --include-symbols      
+      
+      - name: Upload .Net artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: dotnet_release_drop
+          path: nuget
+          
