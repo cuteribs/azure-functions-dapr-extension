@@ -32,7 +32,6 @@ jobs:
           dotnet-version: 8.0.x
       - name: Publish Microsoft.Azure.Functions.Extensions.Dapr.Core
         run: |
-          dotnet restore
           dotnet pack src/Microsoft.Azure.Functions.Extensions.Dapr.Core/Microsoft.Azure.Functions.Extensions.Dapr.Core.csproj \
             -o nuget \
             -c Release \
