@@ -38,19 +38,19 @@ jobs:
             -c Release \
             -p:Version=1.0.0 \
             -p:PackageVersion=1.0.0 \
-            --include-symbols
-          dotnet pack src/Microsoft.Azure.Functions.Worker.Extensions.Dapr/Microsoft.Azure.Functions.Worker.Extensions.Dapr.csproj \
-            -o nuget \
-            -c Release \
-            -p:Version=1.0.0 \
-            -p:PackageVersion=1.0.0 \
-            --include-symbols
+            --include-symbols            
           dotnet pack src/Microsoft.Azure.WebJobs.Extensions.Dapr/Microsoft.Azure.WebJobs.Extensions.Dapr.csproj \
             -o nuget \
             -c Release \
             -p:Version=1.0.0 \
             -p:PackageVersion=1.0.0 \
             --include-symbols      
+          dotnet pack src/Microsoft.Azure.Functions.Worker.Extensions.Dapr/Microsoft.Azure.Functions.Worker.Extensions.Dapr.csproj \
+            -o nuget \
+            -c Release \
+            -p:Version=1.0.0 \
+            -p:PackageVersion=1.0.0 \
+            --include-symbols
       
       - name: Upload .Net artifacts
         uses: actions/upload-artifact@master

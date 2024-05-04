@@ -11,9 +11,6 @@
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-    <!-- Default version for dev -->
-    <Version>99.99.99</Version>
-    <SupportedVersion>99.99.99</SupportedVersion>
     <PackageTags>Microsoft Azure WebJobs Azure-Functions Isolated Dotnet-Isolated Dapr Worker</PackageTags>
   </PropertyGroup>
 
@@ -23,9 +20,8 @@
     <Summary>Dapr extension for Azure functions using the isolated execution model.</Summary>
   </PropertyGroup>
 
-  <!-- Use C# 9.0 features -->
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>Latest</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
