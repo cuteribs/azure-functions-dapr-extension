@@ -32,19 +32,19 @@ jobs:
           dotnet-version: 8.0.x
       - name: Publish Microsoft.Azure.Functions.Extensions.Dapr.Core
         run: |
-          dotnet pack src/Microsoft.Azure.Functions.Extensions.Dapr.Core/Microsoft.Azure.Functions.Extensions.Dapr.Core.csproj \
+          dotnet build src/Microsoft.Azure.Functions.Extensions.Dapr.Core/Microsoft.Azure.Functions.Extensions.Dapr.Core.csproj \
             -o nuget \
             -c Release \
             -p:Version=1.0.0 \
             -p:PackageVersion=1.0.0 \
             --include-symbols            
-          dotnet pack src/Microsoft.Azure.WebJobs.Extensions.Dapr/Microsoft.Azure.WebJobs.Extensions.Dapr.csproj \
+          dotnet build src/Microsoft.Azure.WebJobs.Extensions.Dapr/Microsoft.Azure.WebJobs.Extensions.Dapr.csproj \
             -o nuget \
             -c Release \
             -p:Version=1.0.0 \
             -p:PackageVersion=1.0.0 \
             --include-symbols      
-          dotnet pack src/Microsoft.Azure.Functions.Worker.Extensions.Dapr/Microsoft.Azure.Functions.Worker.Extensions.Dapr.csproj \
+          dotnet build src/Microsoft.Azure.Functions.Worker.Extensions.Dapr/Microsoft.Azure.Functions.Worker.Extensions.Dapr.csproj \
             -o nuget \
             -c Release \
             -p:Version=1.0.0 \
