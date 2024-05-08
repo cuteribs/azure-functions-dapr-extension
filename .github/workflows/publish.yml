@@ -37,6 +37,7 @@ jobs:
           dotnet pack src/Microsoft.Azure.Functions.Extensions.Dapr.Core/Microsoft.Azure.Functions.Extensions.Dapr.Core.csproj \
             -c Release \
             -o nuget \
+            -p:Version=99.99.99 \
             --include-symbols
 
           dotnet build src/Microsoft.Azure.WebJobs.Extensions.Dapr/Microsoft.Azure.WebJobs.Extensions.Dapr.csproj \
@@ -44,6 +45,7 @@ jobs:
           dotnet pack src/Microsoft.Azure.WebJobs.Extensions.Dapr/Microsoft.Azure.WebJobs.Extensions.Dapr.csproj \
             -c Release \
             -o nuget \
+            -p:Version=99.99.99 \
             --include-symbols            
             
           dotnet build src/Microsoft.Azure.Functions.Worker.Extensions.Dapr/Microsoft.Azure.Functions.Worker.Extensions.Dapr.csproj \
@@ -51,6 +53,7 @@ jobs:
           dotnet pack src/Microsoft.Azure.Functions.Worker.Extensions.Dapr/Microsoft.Azure.Functions.Worker.Extensions.Dapr.csproj \
             -c Release \
             -o nuget \
+            -p:Version=99.99.99 \
             --include-symbols
       
       - name: Upload .Net artifacts
